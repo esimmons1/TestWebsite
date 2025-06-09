@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic HTML5 document setup with responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ellis Simmons – Portfolio</title>
+    
+    <!-- Main stylesheet for consistent design across the portfolio -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts for modern, clean typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated particle background canvas - creates dynamic visual interest -->
+    <canvas id="background-canvas"></canvas>
+    
+    <!-- Main Navigation Bar - Fixed header for easy site navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <!-- Personal brand logo linking to homepage -->
+            <div class="nav-logo">
+                <a href="index.html" class="logo-link">ES</a>
+            </div>
+            
+            <!-- Primary navigation menu -->
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <!-- Active page indicator for home -->
+                    <a href="index.html" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="programming.html" class="nav-link">Programming</a>
+                </li>
+                <li class="nav-item">
+                    <a href="photography.html" class="nav-link">Photography</a>
+                </li>
+            </ul>
+            
+            <!-- Mobile responsive hamburger menu -->
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="main">
+        <!-- Hero Section - Primary landing area with introduction -->
+        <section id="home" class="section hero-section active">
+            <div class="container">
+                <div class="hero-content">
+                    <!-- Left side: Personal introduction and call-to-action -->
+                    <div class="hero-text">
+                        <h1 class="hero-title">
+                            <span class="title-line">Hi, I'm</span>
+                            <span class="title-line highlight">Ellis Simmons</span>
+                        </h1>
+                        <p class="hero-description">
+                            I'm a programmer, photographer, and IT major with plans to pursue Computer Engineering. 
+                            Whether I'm working on interactive graphics in Processing, writing clean backend logic, 
+                            or capturing moments through a lens, I enjoy building things that work and look good doing it.
+                        </p>
+                        <p class="hero-subtitle">
+                            This site is a place to share my programming and photography.
+                        </p>
+                        
+                        <!-- Action buttons for main portfolio sections -->
+                        <div class="hero-actions">
+                            <a href="programming.html" class="btn btn-primary">View Programming</a>
+                            <a href="photography.html" class="btn btn-secondary">View Photography</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Right side: Racing track animation with car that draws the track -->
+                    <div class="hero-visual">
+                        <div id="animated-map" class="map-container">
+                              <!-- Racing track SVG with progressive drawing effect -->
+                            <svg class="circuit-svg" viewBox="-300 -3000 6400 100" xmlns="http://www.w3.org/2000/svg">
+                                <!-- 
+                                ====================================================================
+                                CUSTOM RACING TRACK - YOUR PROVIDED PATH (VERTICALLY MIRRORED)
+                                ====================================================================
+                                
+                                Using your custom racing track path data, mirrored vertically.
+                                ViewBox adjusted to your specified dimensions: 0 0 3000 600
+                                -->
+                                
+                                <!-- Define the racing track motion path (Your custom path) -->
+                                <defs>
+                                    <path id="racing-track-path" d="M2833 7259 c-160 -126 -49 -240 332 -341 193 -52 209 -71 104 -127
+-39 -21 -90 -73 -114 -115 -42 -76 -44 -77 -74 -38 -51 66 -126 72 -182 15
+-56 -56 -199 -380 -199 -451 0 -36 -9 -44 -39 -37 -46 12 -121 -35 -121 -76 0
+-17 -20 -29 -49 -29 -95 0 -111 -58 -111 -408 0 -483 62 -572 397 -572 201 0
+209 -9 191 -208 -11 -122 -7 -160 19 -200 l33 -50 -89 33 c-83 31 -98 30 -245
+-5 -86 -20 -192 -36 -236 -35 -598 17 -615 16 -740 -38 -66 -28 -183 -63 -260
+-77 -250 -45 -294 -96 -381 -437 -37 -144 -37 -148 0 -175 107 -78 197 -13
+218 157 30 237 115 284 250 139 115 -123 284 -154 504 -92 105 29 135 31 230
+8 93 -22 129 -22 253 5 156 35 176 32 176 -24 0 -40 89 -124 182 -172 112 -58
+39 -109 -237 -167 -238 -51 -356 -101 -566 -243 -284 -191 -694 -437 -707
+-424 -7 6 -12 36 -12 66 0 39 -12 58 -45 66 -121 33 -179 -5 -250 -167 -60
+-136 -151 -249 -274 -339 -131 -97 -143 -133 -101 -291 18 -66 40 -198 51
+-293 12 -113 33 -198 61 -245 118 -201 -395 93 -523 299 -52 85 -49 162 10
+259 81 131 54 250 -57 250 -158 0 -291 -484 -187 -677 52 -96 280 -334 420
+-437 52 -38 95 -81 95 -95 0 -59 -61 -190 -158 -341 -149 -231 -216 -383 -239
+-541 -34 -228 -83 -487 -103 -540 -18 -47 -16 -49 59 -49 94 0 85 -23 152 379
+57 335 96 439 259 691 234 360 227 445 -52 658 -187 144 -407 412 -337 412 10
+0 19 -8 19 -17 0 -86 382 -376 570 -433 74 -23 81 -31 100 -122 26 -128 41
+-148 109 -148 137 0 138 211 3 466 -62 117 -82 179 -83 250 0 52 -13 148 -29
+214 -44 182 -42 193 75 281 58 43 112 90 121 104 22 34 54 13 54 -36 0 -24 18
+-43 48 -50 90 -23 121 -2 179 120 67 142 41 120 459 376 186 113 392 239 458
+281 158 100 286 149 483 187 397 75 517 294 234 428 -81 39 -100 58 -110 112
+-13 68 -96 150 -137 137 -162 -51 -309 -70 -439 -59 -108 10 -173 5 -255 -19
+-178 -54 -297 -29 -387 79 -85 100 -87 109 -32 109 22 0 96 24 165 53 137 59
+313 70 626 38 140 -14 178 -11 285 26 165 57 172 57 346 -47 83 -50 192 -98
+242 -107 50 -9 142 -45 203 -80 144 -81 245 -85 273 -10 40 104 -179 295 -421
+368 -214 65 -238 103 -202 319 29 177 -49 240 -301 240 -240 0 -297 60 -297
+315 l0 178 85 -1 c70 -2 88 6 105 43 13 30 37 45 72 45 114 0 139 84 84 289
+l-33 126 68 153 69 153 11 -86 c13 -106 30 -135 81 -135 53 0 118 35 118 64 0
+70 145 320 204 352 95 51 156 123 156 184 0 88 -33 105 -330 179 -286 71 -309
+95 -100 103 114 4 366 -39 477 -81 78 -29 391 -81 493 -81 165 0 265 -156 149
+-233 -124 -81 -181 -477 -83 -575 92 -92 222 -75 376 48 195 157 208 151 396
+-192 189 -345 341 -367 373 -55 12 115 138 447 170 447 19 0 28 -29 60 -190
+48 -242 121 -309 285 -261 54 15 114 99 114 160 0 17 23 51 50 75 55 47 68
+145 22 162 -56 22 -167 -80 -202 -186 -34 -104 -74 -127 -108 -64 -25 47 -82
+293 -82 354 0 94 -161 148 -224 75 -60 -69 -196 -404 -196 -483 0 -197 -32
+-185 -170 63 -204 367 -293 402 -541 214 -202 -152 -239 -140 -238 76 l0 165
+88 89 c169 173 69 376 -213 429 -75 14 -172 38 -216 53 -44 14 -125 32 -180
+39 -55 7 -169 30 -253 51 -221 56 -532 54 -604 -2z m395 -2722 c107 -31 136
+-57 61 -57 -32 0 -86 18 -119 40 -69 46 -57 49 58 17z" />
+                                </defs>
+                                
+                                <!-- Group with vertical mirror transform -->
+                                <g transform="scale(1, -1) translate(0, -600)">
+                                    <!-- Background track - faint outline showing the full track -->
+                                    <path id="background-track" 
+                                          d="M2833 7259 c-160 -126 -49 -240 332 -341 193 -52 209 -71 104 -127
+-39 -21 -90 -73 -114 -115 -42 -76 -44 -77 -74 -38 -51 66 -126 72 -182 15
+-56 -56 -199 -380 -199 -451 0 -36 -9 -44 -39 -37 -46 12 -121 -35 -121 -76 0
+-17 -20 -29 -49 -29 -95 0 -111 -58 -111 -408 0 -483 62 -572 397 -572 201 0
+209 -9 191 -208 -11 -122 -7 -160 19 -200 l33 -50 -89 33 c-83 31 -98 30 -245
+-5 -86 -20 -192 -36 -236 -35 -598 17 -615 16 -740 -38 -66 -28 -183 -63 -260
+-77 -250 -45 -294 -96 -381 -437 -37 -144 -37 -148 0 -175 107 -78 197 -13
+218 157 30 237 115 284 250 139 115 -123 284 -154 504 -92 105 29 135 31 230
+8 93 -22 129 -22 253 5 156 35 176 32 176 -24 0 -40 89 -124 182 -172 112 -58
+39 -109 -237 -167 -238 -51 -356 -101 -566 -243 -284 -191 -694 -437 -707
+-424 -7 6 -12 36 -12 66 0 39 -12 58 -45 66 -121 33 -179 -5 -250 -167 -60
+-136 -151 -249 -274 -339 -131 -97 -143 -133 -101 -291 18 -66 40 -198 51
+-293 12 -113 33 -198 61 -245 118 -201 -395 93 -523 299 -52 85 -49 162 10
+259 81 131 54 250 -57 250 -158 0 -291 -484 -187 -677 52 -96 280 -334 420
+-437 52 -38 95 -81 95 -95 0 -59 -61 -190 -158 -341 -149 -231 -216 -383 -239
+-541 -34 -228 -83 -487 -103 -540 -18 -47 -16 -49 59 -49 94 0 85 -23 152 379
+57 335 96 439 259 691 234 360 227 445 -52 658 -187 144 -407 412 -337 412 10
+0 19 -8 19 -17 0 -86 382 -376 570 -433 74 -23 81 -31 100 -122 26 -128 41
+-148 109 -148 137 0 138 211 3 466 -62 117 -82 179 -83 250 0 52 -13 148 -29
+214 -44 182 -42 193 75 281 58 43 112 90 121 104 22 34 54 13 54 -36 0 -24 18
+-43 48 -50 90 -23 121 -2 179 120 67 142 41 120 459 376 186 113 392 239 458
+281 158 100 286 149 483 187 397 75 517 294 234 428 -81 39 -100 58 -110 112
+-13 68 -96 150 -137 137 -162 -51 -309 -70 -439 -59 -108 10 -173 5 -255 -19
+-178 -54 -297 -29 -387 79 -85 100 -87 109 -32 109 22 0 96 24 165 53 137 59
+313 70 626 38 140 -14 178 -11 285 26 165 57 172 57 346 -47 83 -50 192 -98
+242 -107 50 -9 142 -45 203 -80 144 -81 245 -85 273 -10 40 104 -179 295 -421
+368 -214 65 -238 103 -202 319 29 177 -49 240 -301 240 -240 0 -297 60 -297
+315 l0 178 85 -1 c70 -2 88 6 105 43 13 30 37 45 72 45 114 0 139 84 84 289
+l-33 126 68 153 69 153 11 -86 c13 -106 30 -135 81 -135 53 0 118 35 118 64 0
+70 145 320 204 352 95 51 156 123 156 184 0 88 -33 105 -330 179 -286 71 -309
+95 -100 103 114 4 366 -39 477 -81 78 -29 391 -81 493 -81 165 0 265 -156 149
+-233 -124 -81 -181 -477 -83 -575 92 -92 222 -75 376 48 195 157 208 151 396
+-192 189 -345 341 -367 373 -55 12 115 138 447 170 447 19 0 28 -29 60 -190
+48 -242 121 -309 285 -261 54 15 114 99 114 160 0 17 23 51 50 75 55 47 68
+145 22 162 -56 22 -167 -80 -202 -186 -34 -104 -74 -127 -108 -64 -25 47 -82
+293 -82 354 0 94 -161 148 -224 75 -60 -69 -196 -404 -196 -483 0 -197 -32
+-185 -170 63 -204 367 -293 402 -541 214 -202 -152 -239 -140 -238 76 l0 165
+88 89 c169 173 69 376 -213 429 -75 14 -172 38 -216 53 -44 14 -125 32 -180
+39 -55 7 -169 30 -253 51 -221 56 -532 54 -604 -2z m395 -2722 c107 -31 136
+-57 61 -57 -32 0 -86 18 -119 40 -69 46 -57 49 58 17z" 
+                                          stroke="#333" 
+                                          stroke-width="8" 
+                                          fill="none" 
+                                          opacity="0.1"
+                                          stroke-linecap="round" />
+                                    
+                                    <!-- Progressive track - gets drawn as car moves -->
+                                    <path id="progressive-track" 
+                                          d="M2833 7259 c-160 -126 -49 -240 332 -341 193 -52 209 -71 104 -127
+-39 -21 -90 -73 -114 -115 -42 -76 -44 -77 -74 -38 -51 66 -126 72 -182 15
+-56 -56 -199 -380 -199 -451 0 -36 -9 -44 -39 -37 -46 12 -121 -35 -121 -76 0
+-17 -20 -29 -49 -29 -95 0 -111 -58 -111 -408 0 -483 62 -572 397 -572 201 0
+209 -9 191 -208 -11 -122 -7 -160 19 -200 l33 -50 -89 33 c-83 31 -98 30 -245
+-5 -86 -20 -192 -36 -236 -35 -598 17 -615 16 -740 -38 -66 -28 -183 -63 -260
+-77 -250 -45 -294 -96 -381 -437 -37 -144 -37 -148 0 -175 107 -78 197 -13
+218 157 30 237 115 284 250 139 115 -123 284 -154 504 -92 105 29 135 31 230
+8 93 -22 129 -22 253 5 156 35 176 32 176 -24 0 -40 89 -124 182 -172 112 -58
+39 -109 -237 -167 -238 -51 -356 -101 -566 -243 -284 -191 -694 -437 -707
+-424 -7 6 -12 36 -12 66 0 39 -12 58 -45 66 -121 33 -179 -5 -250 -167 -60
+-136 -151 -249 -274 -339 -131 -97 -143 -133 -101 -291 18 -66 40 -198 51
+-293 12 -113 33 -198 61 -245 118 -201 -395 93 -523 299 -52 85 -49 162 10
+259 81 131 54 250 -57 250 -158 0 -291 -484 -187 -677 52 -96 280 -334 420
+-437 52 -38 95 -81 95 -95 0 -59 -61 -190 -158 -341 -149 -231 -216 -383 -239
+-541 -34 -228 -83 -487 -103 -540 -18 -47 -16 -49 59 -49 94 0 85 -23 152 379
+57 335 96 439 259 691 234 360 227 445 -52 658 -187 144 -407 412 -337 412 10
+0 19 -8 19 -17 0 -86 382 -376 570 -433 74 -23 81 -31 100 -122 26 -128 41
+-148 109 -148 137 0 138 211 3 466 -62 117 -82 179 -83 250 0 52 -13 148 -29
+214 -44 182 -42 193 75 281 58 43 112 90 121 104 22 34 54 13 54 -36 0 -24 18
+-43 48 -50 90 -23 121 -2 179 120 67 142 41 120 459 376 186 113 392 239 458
+281 158 100 286 149 483 187 397 75 517 294 234 428 -81 39 -100 58 -110 112
+-13 68 -96 150 -137 137 -162 -51 -309 -70 -439 -59 -108 10 -173 5 -255 -19
+-178 -54 -297 -29 -387 79 -85 100 -87 109 -32 109 22 0 96 24 165 53 137 59
+313 70 626 38 140 -14 178 -11 285 26 165 57 172 57 346 -47 83 -50 192 -98
+242 -107 50 -9 142 -45 203 -80 144 -81 245 -85 273 -10 40 104 -179 295 -421
+368 -214 65 -238 103 -202 319 29 177 -49 240 -301 240 -240 0 -297 60 -297
+315 l0 178 85 -1 c70 -2 88 6 105 43 13 30 37 45 72 45 114 0 139 84 84 289
+l-33 126 68 153 69 153 11 -86 c13 -106 30 -135 81 -135 53 0 118 35 118 64 0
+70 145 320 204 352 95 51 156 123 156 184 0 88 -33 105 -330 179 -286 71 -309
+95 -100 103 114 4 366 -39 477 -81 78 -29 391 -81 493 -81 165 0 265 -156 149
+-233 -124 -81 -181 -477 -83 -575 92 -92 222 -75 376 48 195 157 208 151 396
+-192 189 -345 341 -367 373 -55 12 115 138 447 170 447 19 0 28 -29 60 -190
+48 -242 121 -309 285 -261 54 15 114 99 114 160 0 17 23 51 50 75 55 47 68
+145 22 162 -56 22 -167 -80 -202 -186 -34 -104 -74 -127 -108 -64 -25 47 -82
+293 -82 354 0 94 -161 148 -224 75 -60 -69 -196 -404 -196 -483 0 -197 -32
+-185 -170 63 -204 367 -293 402 -541 214 -202 -152 -239 -140 -238 76 l0 165
+88 89 c169 173 69 376 -213 429 -75 14 -172 38 -216 53 -44 14 -125 32 -180
+39 -55 7 -169 30 -253 51 -221 56 -532 54 -604 -2z m395 -2722 c107 -31 136
+-57 61 -57 -32 0 -86 18 -119 40 -69 46 -57 49 58 17z" 
+                                          stroke="#4A90E2" 
+                                          stroke-width="6" 
+                                          fill="none" 
+                                          stroke-linecap="round" />
+                                    
+                                    <!-- Racing car that moves along the track -->
+                                    <g id="racing-car">
+                                        <!-- Car body (main body color) -->
+                                        <ellipse cx="0" cy="0" rx="8" ry="4" fill="#E2A04A" stroke="#333" stroke-width="1"/>
+                                        <!-- Car nose (front accent color) -->
+                                        <ellipse cx="6" cy="0" rx="3" ry="2" fill="#FF6B6B"/>
+                                        <!-- Car wheels (always black) -->
+                                        <circle cx="-4" cy="-3" r="1.5" fill="#333"/>
+                                        <circle cx="-4" cy="3" r="1.5" fill="#333"/>
+                                        <circle cx="4" cy="-3" r="1.5" fill="#333"/>
+                                        <circle cx="4" cy="3" r="1.5" fill="#333"/>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skills Overview Section -->
+                <div class="skills-section">
+                    <h2 class="section-title">Skills</h2>
+                    <div class="skills-grid">
+                        <!-- Programming Skills Category -->
+                        <div class="skill-category">
+                            <h3 class="category-title">Programming</h3>
+                            <div class="skills-list">
+                                <span class="skill-tag">JavaScript / TypeScript</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Java</span>
+                                <span class="skill-tag">HTML / CSS</span>
+                                <span class="skill-tag">Processing</span>
+                                <span class="skill-tag">MIPS Assembly</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Creative Skills Category -->
+                        <div class="skill-category">
+                            <h3 class="category-title">Creative</h3>
+                            <div class="skills-list">
+                                <span class="skill-tag">Photography</span>
+                                <span class="skill-tag">3D Modeling</span>
+                                <span class="skill-tag">UAS Piloting</span>
+                                <span class="skill-tag">3D Printing</span>
+                                <span class="skill-tag">CNC Machining</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programming Projects Preview Section -->
+        <section id="programming" class="section programming-section">
+            <div class="container">
+                <h2 class="section-title">Programming Projects</h2>
+                <p class="section-description">
+                    Explore my programming work, from interactive graphics to backend systems.
+                </p>
+                
+                <!-- Project cards showcasing different programming areas -->
+                <div class="projects-grid">
+                    <!-- Interactive Graphics Project Card -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="placeholder-image">
+                                <span>Project Image</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Interactive Graphics</h3>
+                            <p class="project-description">Processing-based interactive visualizations and animations.</p>
+                            <div class="project-tags">
+                                <span class="tag">Processing</span>
+                                <span class="tag">Java</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Web Applications Project Card -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="placeholder-image">
+                                <span>Project Image</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Web Applications</h3>
+                            <p class="project-description">Modern web applications built with JavaScript and TypeScript.</p>
+                            <div class="project-tags">
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">TypeScript</span>
+                                <span class="tag">HTML/CSS</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Backend Systems Project Card -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="placeholder-image">
+                                <span>Project Image</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Backend Systems</h3>
+                            <p class="project-description">Clean, efficient backend logic and system architecture.</p>
+                            <div class="project-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">Java</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photography Preview Section -->
+        <section id="photography" class="section photography-section">
+            <div class="container">
+                <h2 class="section-title">Photography</h2>
+                <p class="section-description">
+                    Capturing moments and exploring visual storytelling through the lens.
+                </p>
+                
+                <!-- Preview gallery with selected photos -->
+                <div class="gallery-grid">
+                    <img src="https://i.imgur.com/X18FAS6.jpeg" alt="Photo 24" class="gallery-item" />
+                    <img src="https://i.imgur.com/JleoDjm.jpeg" alt="Photo 15" class="gallery-item" />
+                    <img src="https://i.imgur.com/KhHWTKN.jpeg" alt="Photo 52" class="gallery-item" />
+                    <img src="https://i.imgur.com/PKThbZI.jpeg" alt="Photo 57" class="gallery-item" />
+                    <img src="https://i.imgur.com/rrXwqyO.jpeg" alt="Photo 12" class="gallery-item" />
+                    <img src="https://i.imgur.com/IaiF1xA.jpeg" alt="Photo 49" class="gallery-item" />
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Site Footer - Copyright and contact information -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Ellis Simmons. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for interactive functionality and animations -->
+    <script src="script.js"></script>
+</body>
+</html>
+
