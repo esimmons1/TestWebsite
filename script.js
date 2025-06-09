@@ -1,6 +1,3 @@
-// Enhanced JavaScript for Ellis Simmons Portfolio
-// Multi-page structure with animated map graphic and smooth interactions
-
 class PortfolioApp {
     constructor() {
         this.init();
@@ -179,9 +176,10 @@ class PortfolioApp {
         const motionPath = svg.querySelector("#racing-track-path");
         const progressiveTrack = svg.querySelector("#progressive-track");
         const racingCar = svg.querySelector("#racing-car");
+        const animationText = document.querySelector("#animation-text");
         
-        if (!motionPath || !progressiveTrack || !racingCar) {
-            console.log("Missing elements:", { motionPath, progressiveTrack, racingCar });
+        if (!motionPath || !progressiveTrack || !racingCar || !animationText) {
+            console.log("Missing elements:", { motionPath, progressiveTrack, racingCar, animationText });
             return;
         }
 
@@ -194,9 +192,12 @@ class PortfolioApp {
         
         // Animation duration in milliseconds
         const duration = 16000;
-        // Animation pause duration in milliseconds
-        const pauseDuration = 48000;
+        // Animation pause duration between cycles (now properly implemented)
+        const pauseDuration = 3000; // 3 second pause between cycles
         let startTime = null;
+        let textShown = false; // Track if text has been shown this cycle
+        let animationId = null;
+        let isPaused = false;
         
         // Animation function that runs each frame
         const animate = (currentTime) => {
@@ -204,7 +205,52 @@ class PortfolioApp {
             
             // Calculate progress (0 to 1)
             const elapsed = currentTime - startTime;
-            const progress = (elapsed % duration) / duration;
+            const progress = elapsed / duration;
+            
+            // Check if animation cycle is complete
+            if (progress >= 1) {
+                if (!isPaused) {
+                    isPaused = true;
+                    
+                    // Keep the line fully drawn and car at end position during pause
+                    progressiveTrack.style.strokeDashoffset = 0; // Line stays fully visible
+                    const endPoint = progressiveTrack.getPointAtLength(pathLength);
+                    racingCar.setAttribute("transform", 
+                        translate(${endPoint.x}, ${endPoint.y}) rotate(0)
+                    );
+                    
+                    // Keep text visible during pause (don't hide it yet)
+                    // Text will be hidden when animation restarts
+                    
+                    // Pause for specified duration, then reset and restart immediately
+                    setTimeout(() => {
+                        // Hide text when restarting
+                        animationText.classList.remove("show");
+                        animationText.classList.add("hide");
+                        textShown = false;
+                        
+                        // Reset everything for new cycle
+                        progressiveTrack.style.strokeDashoffset = pathLength; // Hide line
+                        const startPoint = progressiveTrack.getPointAtLength(0);
+                        racingCar.setAttribute("transform", 
+                            translate(${startPoint.x}, ${startPoint.y}) rotate(0)
+                        );
+                        
+                        // Restart animation immediately
+                        startTime = null;
+                        isPaused = false;
+                        requestAnimationFrame(animate);
+                    }, pauseDuration);
+                    return;
+                }
+            }
+            
+            // Show text at 20% progress
+            if (progress >= 0.2 && !textShown) {
+                animationText.classList.remove("hide");
+                animationText.classList.add("show");
+                textShown = true;
+            }
             
             // Update progressive track drawing
             const drawLength = pathLength * progress;
@@ -223,11 +269,13 @@ class PortfolioApp {
             
             // Position and rotate the car
             racingCar.setAttribute("transform", 
-                `translate(${point.x}, ${point.y}) rotate(${angle})`
+                translate(${point.x}, ${point.y}) rotate(${angle})
             );
             
-            // Continue the animation
-            requestAnimationFrame(animate);
+            // Continue the animation if not paused
+            if (!isPaused) {
+                animationId = requestAnimationFrame(animate);
+            }
         };
         
         // Start the animation
@@ -235,7 +283,17 @@ class PortfolioApp {
         
         // Add click interaction to restart animation
         svg.addEventListener("click", () => {
+            // Cancel any existing timeout
+            if (isPaused) {
+                isPaused = false;
+            }
             startTime = null;
+            // Reset text state when manually restarting
+            animationText.classList.remove("show");
+            animationText.classList.add("hide");
+            textShown = false;
+            // Restart animation immediately
+            requestAnimationFrame(animate);
         });
         
         // Add hover effects
@@ -333,7 +391,7 @@ class PortfolioApp {
 
         // Add CSS for animations
         const style = document.createElement("style");
-        style.textContent = `
+        style.textContent = 
             .project-btn, .gallery-item, .skill-category {
                 opacity: 0;
                 transform: translateY(30px);
@@ -343,7 +401,7 @@ class PortfolioApp {
                 opacity: 1 !important;
                 transform: translateY(0) !important;
             }
-        `;
+        ;
         document.head.appendChild(style);
     }
 }
@@ -392,7 +450,7 @@ class AnimationUtils {
             from: fromPath,
             to: toPath,
             animate: (duration = 1000) => {
-                fromElement.style.transition = `d ${duration}ms ease`;
+                fromElement.style.transition = d ${duration}ms ease;
                 fromElement.setAttribute("d", toPath);
             }
         };
@@ -418,90 +476,27 @@ window.animate = (selector, options) => {
                     if (progress > 1) progress = 0; // Loop
                     
                     const point = pathElement.getPointAtLength(progress * pathLength);
-                    element.style.transform = `translate(${point.x - 50}px, ${point.y - 300}px)`;
+                    element.style.transform = translate(${point.x}px, ${point.y}px);
                     
-                    if (options.loop) {
-                        requestAnimationFrame(animateMotion);
-                    }
+                    requestAnimationFrame(animateMotion);
                 };
+                
                 animateMotion();
             }
         }
     }
-
-    // Handle draw animation with anime.js style
-    if (options.draw && options.ease && options.duration && options.loop) {
-        const pathElement = typeof selector === 'string' ? document.querySelector(selector) : selector;
-        if (pathElement && pathElement.getTotalLength) {
-            const length = pathElement.getTotalLength();
-            pathElement.style.strokeDasharray = length;
-            pathElement.style.strokeDashoffset = length;
-            
-            let progress = 0;
-            const animateDraw = () => {
-                progress += 1 / (options.duration / 16); // 60fps approximation
-                if (progress > 1) progress = 0; // Loop
-                
-                const offset = length * (1 - progress);
-                pathElement.style.strokeDashoffset = offset;
-                
-                if (options.loop) {
-                    requestAnimationFrame(animateDraw);
-                }
-            };
-            animateDraw();
-        }
-    }
 };
 
-// Create svg namespace for anime.js compatibility
-window.svg = {
-    createMotionPath: (pathElement) => {
-        return {}; // Return empty object for spread operator
-    },
-    createDrawable: (pathElement) => {
-        return pathElement; // Return the actual element for chaining
-    }
-};
-
-// Initialize the application when DOM is loaded
+// Initialize the portfolio app when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
     new PortfolioApp();
-    
-    // Anime.js style animation code (only on home page)
-    if (document.querySelector(".circuit-svg")) {
-        setTimeout(() => {
-            // Apply motion path to .car
-            animate('.car', {
-                ease: 'linear',
-                duration: 8000,
-                loop: true,
-                ...svg.createMotionPath(document.querySelector('#motionPath'))
-            });
-
-            // Optional: draw the path
-            animate(svg.createDrawable(document.querySelector('#motionPath')), {
-                draw: '0 1',
-                ease: 'linear',
-                duration: 8000,
-                loop: true
-            });
-        }, 1000);
-    }
 });
 
-// Performance optimization
-window.addEventListener("load", () => {
-    // Preload any additional resources
-    const preloadImages = () => {
-        // Add any image preloading logic here
-    };
-    
-    preloadImages();
-});
-
-// Export for potential module usage
-if (typeof module !== "undefined" && module.exports) {
-    module.exports = { PortfolioApp, AnimationUtils };
+// Initialize immediately if DOM is already loaded
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+        new PortfolioApp();
+    });
+} else {
+    new PortfolioApp();
 }
-

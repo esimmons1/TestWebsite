@@ -1,4 +1,7 @@
 /* === Root Variables === */
+/* This section defines custom CSS properties (variables) for consistent styling throughout the website. */
+/* It includes color palettes (blue and gray), typography settings (font family, sizes, weights), */
+/* spacing units, layout properties (container width, border-radius), shadow effects, and transition durations. */
 :root {
     /* Blue and Gray Color Scheme */
     --primary-blue: #4A90E2;
@@ -35,8 +38,8 @@
     --spacing-2xl: 4rem;
     --spacing-3xl: 6rem;
     
-    /* Layout */
-    --container-max-width: 1200px;
+    /* Layout - IMPROVED: Increased max-width for better space utilization */
+    --container-max-width: 1400px;
     --border-radius: 12px;
     --border-radius-sm: 8px;
     --border-radius-lg: 16px;
@@ -53,6 +56,8 @@
 }
 
 /* === Global Reset === */
+/* This section applies a universal reset to all HTML elements, ensuring consistent styling across different browsers. */
+/* It sets box-sizing to border-box, removes default margins and paddings, and defines smooth scrolling behavior. */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -63,6 +68,8 @@ html {
     scroll-behavior: smooth;
 }
 
+/* This defines the base styles for the body, including font family, size, weight, line height, text color, and background color. */
+/* It also hides horizontal overflow to prevent unwanted scrollbars. */
 body {
     font-family: var(--font-family);
     font-size: var(--font-size-base);
@@ -74,6 +81,8 @@ body {
 }
 
 /* === Background Canvas === */
+/* Styles for a fixed background canvas element, often used for animations or subtle visual effects. */
+/* It's positioned to cover the entire viewport, placed behind other content with a low z-index, and has a slight opacity. */
 #background-canvas {
     position: fixed;
     top: 0;
@@ -85,6 +94,8 @@ body {
 }
 
 /* === Navigation === */
+/* Styles for the main navigation bar, which is fixed at the top of the viewport. */
+/* It includes background styling with a blur effect, a bottom border, and a transition for smooth changes. */
 .nav {
     position: fixed;
     top: 0;
@@ -97,16 +108,18 @@ body {
     transition: var(--transition-normal);
 }
 
+/* IMPROVED: Navigation container now uses percentage-based width for better space utilization */
 .nav-container {
-    max-width: var(--container-max-width);
+    max-width: 90%;
     margin: 0 auto;
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-lg);
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 70px;
 }
 
+/* Styles for the navigation logo, including font size, weight, color, and hover effects. */
 .nav-logo .logo-link {
     font-size: 1.5rem;
     font-weight: var(--font-weight-bold);
@@ -120,12 +133,15 @@ body {
     transform: scale(1.05);
 }
 
+/* Styles for the navigation menu, arranging list items horizontally with a defined gap. */
 .nav-menu {
     display: flex;
     list-style: none;
     gap: var(--spacing-lg);
 }
 
+/* Styles for individual navigation links, including text color, decoration, padding, border-radius, and transition effects. */
+/* It also includes a subtle underline animation on hover and when the link is active. */
 .nav-link {
     color: var(--text-secondary);
     text-decoration: none;
@@ -158,13 +174,16 @@ body {
     width: 100%;
 }
 
+/* Styles for the navigation toggle (hamburger icon) for mobile views, initially hidden. */
 .nav-toggle {
+    width: 100%;
     display: none;
     flex-direction: column;
     cursor: pointer;
     gap: 4px;
 }
 
+/* Styles for the individual bars within the navigation toggle, including width, height, background, and transition. */
 .nav-toggle .bar {
     width: 25px;
     height: 3px;
@@ -174,19 +193,23 @@ body {
 }
 
 /* === Main Content === */
+/* Styles for the main content area, with a top margin to account for the fixed navigation bar. */
 .main {
+    width: 100%;
     margin-top: 70px;
 }
 
+/* IMPROVED: Container now uses percentage-based width for better space utilization */
 .container {
-    max-width: var(--container-max-width);
+    max-width: 90%;
     margin: 0 auto;
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-lg);
 }
 
+/* IMPROVED: Reduced section padding for better space efficiency */
 .section {
     min-height: 100vh;
-    padding: var(--spacing-3xl) 0;
+    padding: var(--spacing-2xl) 0;
     display: none;
 }
 
@@ -195,20 +218,24 @@ body {
 }
 
 /* === Hero Section === */
+/* Styles for the hero section, typically the first section on a page, centering its content. */
 .hero-section {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+/* IMPROVED: Hero content layout optimized for better space utilization */
 .hero-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-3xl);
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--spacing-xl);
     align-items: center;
-    margin-bottom: var(--spacing-3xl);
+    margin-bottom: var(--spacing-2xl);
+    max-width: 100%;
 }
 
+/* Styles for the main title in the hero section, including responsive font size, weight, line height, and bottom margin. */
 .hero-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: var(--font-weight-bold);
@@ -216,10 +243,12 @@ body {
     margin-bottom: var(--spacing-md);
 }
 
+/* Styles for individual lines within the hero title. */
 .title-line {
     display: block;
 }
 
+/* Styles for a highlighted line within the hero title, applying a gradient background and transparent text effect. */
 .title-line.highlight {
     background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
     -webkit-background-clip: text;
@@ -227,6 +256,7 @@ body {
     background-clip: text;
 }
 
+/* Styles for the description text in the hero section, including font size, color, margin, and line height. */
 .hero-description {
     font-size: 1.125rem;
     color: var(--text-secondary);
@@ -234,17 +264,20 @@ body {
     line-height: 1.7;
 }
 
+/* Styles for a subtitle in the hero section, setting its color and bottom margin. */
 .hero-subtitle {
     color: var(--text-muted);
     margin-bottom: var(--spacing-xl);
 }
 
+/* Styles for a group of action buttons in the hero section, arranged with a gap and allowing wrapping. */
 .hero-actions {
     display: flex;
     gap: var(--spacing-md);
     flex-wrap: wrap;
 }
 
+/* Base styles for all buttons, including display, alignment, padding, border-radius, text decoration, font weight, and transitions. */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -258,23 +291,27 @@ body {
     font-size: 1rem;
 }
 
+/* Styles for the primary button, with a gradient background, white text, and a shadow effect. */
 .btn-primary {
     background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
     color: white;
     box-shadow: var(--shadow-md);
 }
 
+/* Hover effects for the primary button, including a slight upward translation and an increased shadow. */
 .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
 
+/* Styles for the secondary button, with a transparent background, blue text, and a blue border. */
 .btn-secondary {
     background: transparent;
     color: var(--primary-blue);
     border: 2px solid var(--primary-blue);
 }
 
+/* Hover effects for the secondary button, including a blue background, white text, and a slight upward translation. */
 .btn-secondary:hover {
     background: var(--primary-blue);
     color: white;
@@ -282,16 +319,18 @@ body {
 }
 
 /* === Animated Map === */
+/* Styles for the visual element in the hero section, typically an animated map, centering its content. */
 .hero-visual {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* IMPROVED: Map container optimized for better space utilization */
 .map-container {
     width: 100%;
-    max-width: 400px;
-    height: 500px;
+    max-width: 350px;
+    height: 450px;
     background: rgba(74, 144, 226, 0.05);
     border-radius: var(--border-radius-lg);
     border: 1px solid rgba(74, 144, 226, 0.2);
@@ -302,34 +341,66 @@ body {
     overflow: hidden;
 }
 
+/* Styles for the SVG element representing the circuit in the animated map, ensuring it fills its container. */
 .circuit-svg {
     width: 100%;
     height: 100%;
 }
 
+/* Animation completion text */
+.animation-completion-text {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    color: var(--primary-blue);
+    font-size: 2;
+    font-weight: var(--font-weight-semibold);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.8s ease;
+    pointer-events: none;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.animation-completion-text.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animation-completion-text.hide {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+/* Styles for the circuit path, including stroke-dasharray and stroke-dashoffset for drawing animation. */
 .circuit {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
     animation: drawPath 3s ease-in-out infinite;
 }
 
+/* Adds an animation delay to a specific circuit path. */
 .circuit-b {
     animation-delay: 1.5s;
 }
 
+/* Styles for nodes in the circuit, initially hidden and fading in with an animation. */
 .node {
     opacity: 0;
     animation: fadeInNode 0.5s ease-in-out forwards;
 }
 
+/* Adds animation delays to specific nodes for staggered appearance. */
 .node:nth-child(2) { animation-delay: 1s; }
 .node:nth-child(3) { animation-delay: 2s; }
 .node:nth-child(4) { animation-delay: 3s; }
 
+/* Styles for a 'car' element, applying a drop shadow. */
 .car {
     filter: drop-shadow(0 0 8px rgba(226, 160, 74, 0.6));
 }
 
+/* Keyframe animation for drawing the circuit path, controlling opacity and stroke-dashoffset. */
 @keyframes drawPath {
     0% {
         stroke-dashoffset: 1000;
@@ -348,6 +419,7 @@ body {
     }
 }
 
+/* Keyframe animation for fading in nodes. */
 @keyframes fadeInNode {
     to {
         opacity: 1;
@@ -355,10 +427,12 @@ body {
 }
 
 /* === Skills Section === */
+/* IMPROVED: Reduced skills section margin for better space efficiency */
 .skills-section {
-    margin-top: var(--spacing-3xl);
+    margin-top: var(--spacing-2xl);
 }
 
+/* Styles for section titles, including font size, weight, text alignment, bottom margin, and color. */
 .section-title {
     font-size: 2.5rem;
     font-weight: var(--font-weight-bold);
@@ -367,37 +441,43 @@ body {
     color: var(--text-primary);
 }
 
+/* Styles for section descriptions, including font size, color, text alignment, bottom margin, and max-width for centering. */
 .section-description {
     font-size: 1.125rem;
     color: var(--text-secondary);
     text-align: center;
     margin-bottom: var(--spacing-xl);
-    max-width: 600px;
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
 }
 
+/* IMPROVED: Skills grid optimized for better space utilization */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-xl);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
     margin-top: var(--spacing-xl);
+    max-width: 100%;
 }
 
+/* IMPROVED: Skill category padding optimized */
 .skill-category {
     background: var(--surface-gray);
-    padding: var(--spacing-xl);
+    padding: var(--spacing-lg);
     border-radius: var(--border-radius-lg);
     border: 1px solid rgba(74, 144, 226, 0.1);
     transition: var(--transition-normal);
 }
 
+/* Hover effects for skill categories, changing border color, applying a slight upward translation, and adding a shadow. */
 .skill-category:hover {
     border-color: rgba(74, 144, 226, 0.3);
     transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
 }
 
+/* Styles for skill category titles, including font size, weight, color, and bottom margin. */
 .category-title {
     font-size: 1.25rem;
     font-weight: var(--font-weight-semibold);
@@ -405,12 +485,14 @@ body {
     margin-bottom: var(--spacing-md);
 }
 
+/* Styles for the list of skills within a category, arranged with flexbox and allowing wrapping. */
 .skills-list {
     display: flex;
     flex-wrap: wrap;
     gap: var(--spacing-sm);
 }
 
+/* Styles for individual skill tags, including background, text color, padding, border-radius, font size, weight, border, and transition. */
 .skill-tag {
     background: rgba(74, 144, 226, 0.1);
     color: var(--primary-blue);
@@ -422,23 +504,27 @@ body {
     transition: var(--transition-fast);
 }
 
+/* Hover effects for skill tags, changing background and applying a slight scale transformation. */
 .skill-tag:hover {
     background: rgba(74, 144, 226, 0.2);
     transform: scale(1.05);
 }
 
 /* === Programming Section === */
+/* Styles for the programming section, applying a subtle linear gradient background. */
 .programming-section {
     background: linear-gradient(135deg, rgba(74, 144, 226, 0.02), rgba(52, 73, 94, 0.02));
 }
 
+/* IMPROVED: Project buttons grid optimized for better space utilization */
 .project-buttons {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: var(--spacing-md);
     margin-top: var(--spacing-xl);
 }
 
+/* Styles for individual project buttons, including display, background, text color, padding, border-radius, text decoration, font weight, text alignment, transition, and border. */
 .project-btn {
     display: block;
     background: var(--surface-gray);
@@ -452,6 +538,7 @@ body {
     border: 1px solid rgba(74, 144, 226, 0.1);
 }
 
+/* Hover effects for project buttons, changing background, border color, applying a slight upward translation, and adding a shadow. */
 .project-btn:hover {
     background: var(--secondary-gray);
     border-color: var(--primary-blue);
@@ -460,20 +547,23 @@ body {
 }
 
 /* === Photography Section === */
+/* Styles for the photography section, including background color, minimum height, and vertical padding. */
 .photography-section {
     background: var(--background-gray);
     min-height: 100vh;
     padding: var(--spacing-xl) 0;
 }
 
+/* IMPROVED: Gallery grid optimized for better space utilization and responsive layout */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     grid-auto-rows: 10px;
     gap: 15px;
     margin-top: var(--spacing-xl);
 }
 
+/* Styles for individual gallery items, including border-radius, overflow, transition, cursor, border, background, and relative positioning. */
 .gallery-item {
     border-radius: var(--border-radius-sm);
     overflow: hidden;
@@ -482,22 +572,27 @@ body {
     border: 3px solid var(--primary-blue);
     background: var(--surface-gray);
     position: relative;
-}
-
-.gallery-item:hover {
-    transform: scale(1.02);
-    box-shadow: 0 8px 25px rgba(74, 144, 226, 0.3);
-    border-color: var(--accent-blue);
-}
-
-.gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
 
-/* Masonry-style layout with varying heights */
+/* Horizontal images span 2 columns and have 2:1 aspect ratio (2 wide by 1 tall) - 10% shorter */
+.gallery-item.horizontal-image {
+    grid-column: span 2;
+    grid-row-end: span 18; /* 10% shorter for more cinematic aspect ratio */
+}
+
+/* Hover effects for gallery items, applying a slight scale transformation, a shadow, and changing border color. */
+.gallery-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(74, 144, 226, 0.3);
+    border-color: var(--accent-blue);
+}
+
+/* Defines varying row spans for gallery items to create a masonry-style layout. */
+/* This creates an uneven, visually appealing grid of images. */
 .gallery-item:nth-child(1) { grid-row-end: span 25; }
 .gallery-item:nth-child(2) { grid-row-end: span 30; }
 .gallery-item:nth-child(3) { grid-row-end: span 22; }
@@ -530,7 +625,41 @@ body {
 .gallery-item:nth-child(30) { grid-row-end: span 26; }
 .gallery-item:nth-child(n+31) { grid-row-end: span 27; }
 
+/* Override row spans for horizontal images - 10% shorter for more cinematic aspect ratio */
+.gallery-item.horizontal-image:nth-child(1) { grid-row-end: span 16; }
+.gallery-item.horizontal-image:nth-child(2) { grid-row-end: span 20; }
+.gallery-item.horizontal-image:nth-child(3) { grid-row-end: span 17; }
+.gallery-item.horizontal-image:nth-child(4) { grid-row-end: span 19; }
+.gallery-item.horizontal-image:nth-child(5) { grid-row-end: span 18; }
+.gallery-item.horizontal-image:nth-child(6) { grid-row-end: span 16; }
+.gallery-item.horizontal-image:nth-child(7) { grid-row-end: span 21; }
+.gallery-item.horizontal-image:nth-child(8) { grid-row-end: span 17; }
+.gallery-item.horizontal-image:nth-child(9) { grid-row-end: span 19; }
+.gallery-item.horizontal-image:nth-child(10) { grid-row-end: span 18; }
+.gallery-item.horizontal-image:nth-child(n+11) { grid-row-end: span 18; }
+
+/* === Loading and Error Messages === */
+.loading-message {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    margin-top: var(--spacing-xl);
+}
+
+.error-message {
+    text-align: center;
+    color: #e74c3c;
+    font-size: 1rem;
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: rgba(231, 76, 60, 0.1);
+    border-radius: var(--border-radius-sm);
+    border: 1px solid rgba(231, 76, 60, 0.2);
+}
+
 /* === Lightbox === */
+/* Styles for the lightbox overlay, initially hidden and covering the entire screen when active. */
+/* It's fixed, has a high z-index, and a semi-transparent black background. */
 .lightbox {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -544,6 +673,7 @@ body {
     background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
 }
 
+/* Styles for the content displayed within the lightbox (e.g., an image), centering it and ensuring it fits within the viewport. */
 .lightbox-content {
     margin: auto;
     display: block;
@@ -552,6 +682,7 @@ body {
     object-fit: contain;
 }
 
+/* Styles for the close button of the lightbox, positioning it at the top right, setting its color, size, and weight. */
 .close {
     position: absolute;
     top: 15px;
@@ -563,6 +694,7 @@ body {
     cursor: pointer;
 }
 
+/* Hover and focus effects for the lightbox close button, changing its color and removing text decoration. */
 .close:hover,
 .close:focus {
     color: #bbb;
@@ -571,6 +703,7 @@ body {
 }
 
 /* === Footer === */
+/* Styles for the website footer, including background, top border, padding, text alignment, and text color. */
 .footer {
     background: var(--surface-gray);
     border-top: 1px solid rgba(74, 144, 226, 0.1);
@@ -579,8 +712,134 @@ body {
     color: var(--text-muted);
 }
 
-/* === Responsive Design === */
+/* === IMPROVED RESPONSIVE DESIGN === */
+
+/* Large screens - utilize more space */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 85%;
+    }
+    
+    .nav-container {
+        max-width: 85%;
+    }
+    
+    .hero-content {
+        gap: var(--spacing-2xl);
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-xl);
+    }
+    
+    .project-buttons {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+/* Extra large screens */
+@media (min-width: 1600px) {
+    .container {
+        max-width: 80%;
+    }
+    
+    .nav-container {
+        max-width: 80%;
+    }
+    
+    .hero-content {
+        grid-template-columns: 1.3fr 0.7fr;
+        gap: var(--spacing-3xl);
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-2xl);
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+}
+
+/* Medium-large screens optimization */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .container {
+        max-width: 92%;
+    }
+    
+    .nav-container {
+        max-width: 92%;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .project-buttons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+/* Medium screens - optimize layout */
+@media (max-width: 1024px) {
+    .container {
+        max-width: 95%;
+        padding: 0 var(--spacing-md);
+    }
+    
+    .nav-container {
+        max-width: 95%;
+        padding: 0 var(--spacing-md);
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        text-align: center;
+    }
+    
+    .hero-visual {
+        order: -1; /* Move visual above text on smaller screens */
+    }
+    
+    .map-container {
+        max-width: 300px;
+        height: 400px;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    .project-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    /* Horizontal images on medium screens span 2 columns if space allows */
+    .gallery-item.horizontal-image {
+        grid-column: span 2;
+    }
+}
+
+/* Media queries for responsive design, applying styles when the screen width is 768px or less. */
 @media (max-width: 768px) {
+    /* Adjusts the navigation menu for smaller screens, making it fixed, full-width, and initially off-screen. */
+    /* It also includes background, blur, and padding adjustments, and a transition for sliding in. */
     .nav-menu {
         position: fixed;
         top: 70px;
@@ -593,79 +852,98 @@ body {
         justify-content: flex-start;
         align-items: center;
         padding-top: var(--spacing-xl);
-        transition: var(--transition-normal);
+        gap: var(--spacing-lg);
+        transition: left var(--transition-normal);
     }
-    
+
+    /* Shows the navigation menu when it has the 'active' class. */
     .nav-menu.active {
         left: 0;
     }
-    
+
+    /* Shows the navigation toggle on smaller screens. */
     .nav-toggle {
         display: flex;
     }
-    
+
+    /* Transforms the navigation toggle bars when active to create an 'X' shape. */
     .nav-toggle.active .bar:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
     }
-    
+
     .nav-toggle.active .bar:nth-child(2) {
         opacity: 0;
     }
-    
+
     .nav-toggle.active .bar:nth-child(3) {
         transform: rotate(-45deg) translate(7px, -6px);
     }
-    
+
+    /* Adjusts the hero content for smaller screens, stacking elements vertically and centering text. */
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: var(--spacing-xl);
+        gap: var(--spacing-lg);
     }
-    
-    .hero-actions {
-        justify-content: center;
+
+    /* Moves the hero visual above the text on smaller screens. */
+    .hero-visual {
+        order: -1;
     }
-    
+
+    /* Adjusts the map container size for smaller screens. */
+    .map-container {
+        max-width: 280px;
+        height: 350px;
+    }
+
+    /* Adjusts the skills grid for smaller screens, using a single column layout. */
     .skills-grid {
         grid-template-columns: 1fr;
     }
-    
+
+    /* Adjusts the project buttons for smaller screens, using a single column layout. */
     .project-buttons {
         grid-template-columns: 1fr;
     }
     
+    /* Gallery adjustments for mobile */
     .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 10px;
     }
     
-    .gallery-item:nth-child(n) { 
-        grid-row-end: span 20; 
+    /* On mobile, horizontal images span 1 column but maintain proportional height - 10% shorter */
+    .gallery-item.horizontal-image {
+        grid-column: span 1;
+        grid-row-end: span 13; /* 10% shorter for mobile */
     }
 }
 
+/* Extra small screens */
 @media (max-width: 480px) {
     .container {
+        max-width: 98%;
         padding: 0 var(--spacing-sm);
     }
     
-    .section {
-        padding: var(--spacing-xl) 0;
+    .nav-container {
+        max-width: 98%;
+        padding: 0 var(--spacing-sm);
     }
     
-    .hero-title {
+    .section-title {
         font-size: 2rem;
     }
     
-    .hero-actions {
-        flex-direction: column;
-        align-items: center;
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 8px;
     }
     
-    .btn {
-        width: 100%;
-        justify-content: center;
-        max-width: 250px;
+    .gallery-item.horizontal-image {
+        grid-column: span 1;
+        grid-row-end: span 11; /* 10% shorter for very small screens */
     }
 }
 
